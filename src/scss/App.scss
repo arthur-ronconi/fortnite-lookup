@@ -1,0 +1,44 @@
+@import "fonts.scss";
+@import "spacing.scss";
+
+$font-family: "Poppins", sans-serif;
+$font-weight-thin: 300;
+$font-weight-normal: 400;
+$font-weight-bold: 700;
+
+$color-primary: #8b73bf;
+$white: #fff;
+
+:root {
+  font-size: 16px;
+}
+body {
+  font-family: $font-family;
+}
+.main-heading {
+  font-weight: $font-weight-bold;
+  color: $white;
+}
+.form-label {
+  font-weight: $font-weight-thin;
+  color: $white;
+}
+.jumbotron {
+  background: linear-gradient(
+    157deg,
+    rgba(173, 150, 221, 1) 0%,
+    rgba(53, 8, 153, 1) 100%
+  );
+  border-radius: 0;
+}
+.btn {
+  font-weight: $font-weight-bold;
+  &-white {
+    background-color: $white;
+    color: $color-primary;
+    &:hover {
+      color: darken($color-primary, 15%);
+      background-color: darken($white, 15%);
+    }
+  }
+}
