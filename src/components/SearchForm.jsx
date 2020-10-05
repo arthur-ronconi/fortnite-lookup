@@ -1,40 +1,56 @@
-import React, { useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { SearchContext } from "../context/SearchContext";
 import { AccountContext } from "../context/AccountContext";
+import { UserInfoContext } from "../context/UserInfoContext";
 
-export const SearchForm = (props) => {
+export const SearchForm = () => {
   const FortniteAPI = require("fortnite-api-io");
   const fortniteAPI = new FortniteAPI("d4b0c477-a3bd4895-cf0dd77a-6d169cb7");
 
   const [searchTerm, setSearchTerm] = useContext(SearchContext);
   const [accountId, setAccountId] = useContext(AccountContext);
+  const [userInfo, setUserInfo] = useContext(UserInfoContext);
+  const history = useHistory();
 
+  // sets search term state on input change
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
   };
 
+  // logs input change
   useEffect(() => {
-    console.log(searchTerm);
+    console.log(`searchTerm changed to ${searchTerm}`);
   }, [searchTerm]);
 
+  // gets account id by username, sets accountId state
   const handleClick = (e) => {
-    e.preventDefault()
+    e.preventDefault();
+    const getAccountId = () => {
+      fortniteAPI
+        .getAccountIdByUsername(searchTerm)
+        .then((res) => {
+          setAccountId(res.account_id);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    getAccountId();
+  };
+
+  useEffect(() => {
+    console.log(`got id ${accountId}`);
     fortniteAPI
-      .getAccountIdByUsername(searchTerm)
+      .getGlobalPlayerStats(accountId)
       .then((res) => {
-        setAccountId(res.account_id);
+        setUserInfo(res);
+      }).then(()=>{
+        // history.push(`/user/${accountId}`)
       })
       .catch((err) => {
         console.log(err);
       });
-  };
-
-  let link;
-
-  useEffect(() => {
-    link = accountId;
-    console.log(accountId);
   }, [accountId]);
 
   return (
@@ -51,16 +67,16 @@ export const SearchForm = (props) => {
           onChange={handleChange}
         />
       </div>
-      <Link
-        to={`/user/${link}`}
-        onClick={handleClick}
-        className="btn btn-lg btn-white"
-      >
+      {/* <Link
+      to={`/user/:${link}`}
+      onClick={handleClick}
+      className="btn btn-white"
+    >
+      Search
+    </Link> */}
+      <button onClick={handleClick} className="btn btn-lg btn-secondary">
         Search
-      </Link>
-      {/* <button onClick={handleClick} className="btn btn-lg btn-secondary">
-        Search
-      </button> */}
+      </button>
     </form>
   );
 };

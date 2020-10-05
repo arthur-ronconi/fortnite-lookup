@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Hero } from "../components/Hero";
+// import { UserInfoContext } from "../context/UserInfoContext";
+
 export const User = () => {
-  let userName = "Ninja";
-  return (
-    <div>
-      <Hero title={userName} />
-    </div>
-  );
+  // const [userInfo, setUserInfo] = useContext(UserInfoContext)
+  // let name = userInfo.name;
+  let name = 'name';
+  return <div>{<Hero title={name} />}</div>;
 };
