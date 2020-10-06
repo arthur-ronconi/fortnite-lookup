@@ -23,35 +23,25 @@ export const SearchForm = () => {
     console.log(`searchTerm changed to ${searchTerm}`);
   }, [searchTerm]);
 
-  // gets account id by username, sets accountId state
-  const handleClick = (e) => {
+  const getAccountId = (username) => {
+    return fortniteAPI.getAccountIdByUsername(username)
+  }
+  const handleClick = async (e) => {
     e.preventDefault();
-    const getAccountId = () => {
-      fortniteAPI
-        .getAccountIdByUsername(searchTerm)
-        .then((res) => {
-          setAccountId(res.account_id);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
-    getAccountId();
+    try {
+      const data = await getAccountId(searchTerm);
+      const id = await data.account_id
+      
+      setAccountId(id)
+      console.log(id);
+      history.push(`/user/${id}`)
+    } catch (err) {
+      console.log(err);
+    }
+    
   };
 
-  useEffect(() => {
-    console.log(`got id ${accountId}`);
-    fortniteAPI
-      .getGlobalPlayerStats(accountId)
-      .then((res) => {
-        setUserInfo(res);
-      }).then(()=>{
-        // history.push(`/user/${accountId}`)
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [accountId]);
+  
 
   return (
     <form>
@@ -74,7 +64,7 @@ export const SearchForm = () => {
     >
       Search
     </Link> */}
-      <button onClick={handleClick} className="btn btn-lg btn-secondary">
+      <button onClick={handleClick} className="btn btn-white px-5">
         Search
       </button>
     </form>
