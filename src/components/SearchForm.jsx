@@ -44,7 +44,7 @@ export const SearchForm = () => {
   
 
   return (
-    <form>
+    <form className="search-form">
       <div className="form-group pt-4">
         <label htmlFor="searchForm" className="form-label">
           Search Username

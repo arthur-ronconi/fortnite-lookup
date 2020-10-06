@@ -10,6 +10,7 @@ export const User = () => {
   const [accountId, setAccountId] = useContext(AccountContext);
   const [userInfo, setUserInfo] = useContext(UserInfoContext);
   const [username, setUsername] = useState();
+  const [stats, setStats] = useState([]);
 
   let userData;
   useEffect(() => {
@@ -23,10 +24,7 @@ export const User = () => {
         setUsername(data.name);
         userData = await data;
         console.log(userData);
-        const array = Object.entries(userData.global_stats.solo);
-        for(let item in array){
-          console.log(item);
-        }
+        setStats(Object.entries(await userData.global_stats.solo));
       } catch (err) {
         console.log(err);
       }
@@ -34,15 +32,31 @@ export const User = () => {
     getStats();
   }, []);
 
+  useEffect(() => {
+    console.log(stats[1]);
+  }, [stats]);
+
   return (
     <div>
       {username ? (
         <div>
-          <Hero title={username} />
+          <Hero title={username} className="jumbotron-user"/>
           <div className="container">
             <div className="row">
               <div className="col-4">
                 <h3>Solo</h3>
+                <ul>
+                  <li>KD: {stats[1]}</li>
+                  <li>Win rate:</li>
+                  <li>Kills:</li>
+                  <li>Matches Played:</li>
+                  <li>Players Outlived:</li>
+                  <li>Top 1:</li>
+                  <li>Top 3:</li>
+                  <li>Top 5:</li>
+                  <li>Top 10:</li>
+                  <li>Top 25:</li>
+                </ul>
               </div>
               <div className="col-4">
                 <h3>Duo</h3>

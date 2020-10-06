@@ -30,6 +30,11 @@ h1, h2, h3, h4, h5, h6, .display-1, .display-2, .display-3, .display-4 {
   font-weight: $font-weight-bold;
   color: $white;
 }
+.search-form {
+  input.form-control {
+    width: 50%;
+  }
+}
 .form-label {
   font-weight: $font-weight-thin;
   color: $white;
@@ -41,10 +46,14 @@ h1, h2, h3, h4, h5, h6, .display-1, .display-2, .display-3, .display-4 {
     rgba(53, 8, 153, 1) 100%
   );
   border-radius: 0;
-  height: 27rem;
+  max-height: 27rem;
   overflow: hidden;
   padding-left: 1rem;
   padding-right: 1rem;
+  clip-path: polygon(0 0, 100% 0, 100% 78%, 22% 100%, 0 81%);
+  // &-user {
+  //   height: 15rem !important;
+  // }
 }
 .btn {
   font-weight: $font-weight-bold;

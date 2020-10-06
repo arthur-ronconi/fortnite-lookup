@@ -1,7 +1,7 @@
 import React from "react";
 export const Hero = (props) => {
   return (
-    <header className="jumbotron text-left section">
+    <header className={`jumbotron text-left section ${props.className}`}>
       <div className="container">
         <div className="mt-5">
         <div className="row">

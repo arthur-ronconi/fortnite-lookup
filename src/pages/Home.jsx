@@ -9,7 +9,7 @@ export const Home = () => {
 
   useEffect(() => {
     const getNews = () => {
-      return fortniteAPI.getNews("br", { lang: "pt-BR" });
+      return fortniteAPI.getNews("br", { lang: "en" });
     };
 
     const setNews = async () => {
@@ -52,11 +52,11 @@ export const Home = () => {
           </div>
         </div>
       </Hero>
-      <div className="container">
-        <div className="section">
+      <div className="section">
+        <div className="container">
           <div className="row">
             <div className="col-8">
-              <h2 className="ml-3">Notícias</h2>
+              <h2 className="ml-3">News</h2>
               <ul className="py-3">
                 {titles.map((item) => {
                   return (
