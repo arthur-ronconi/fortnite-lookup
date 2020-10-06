@@ -3,8 +3,13 @@ export const Hero = (props) => {
   return (
     <header className="jumbotron text-left section">
       <div className="container">
-        <h1 className="display-4 main-heading">{props.title}</h1>
-        {props.children}
+        <div className="mt-5">
+        <div className="row">
+          <h1 className="display-4 main-heading">{props.title}</h1>
+          {props.children}
+        </div>
+        </div>
+        
       </div>
     </header>
   );

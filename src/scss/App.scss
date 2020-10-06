@@ -1,7 +1,8 @@
 @import "fonts.scss";
 @import "spacing.scss";
 
-$font-family: "Poppins", sans-serif;
+$font-family-title: "Poppins", sans-serif;
+$font-family-text: 'Source Sans Pro', sans-serif;
 $font-weight-thin: 300;
 $font-weight-normal: 400;
 $font-weight-bold: 700;
@@ -9,12 +10,22 @@ $font-weight-bold: 700;
 $color-primary: #8b73bf;
 $white: #fff;
 
+* {
+  transition: all 0.2s ease-in-out;
+}
+
 :root {
   font-size: 16px;
 }
 body {
-  font-family: $font-family;
+  font-family: $font-family-text;
+  line-height: 1.2;
 }
+h1, h2, h3, h4, h5, h6, .display-1, .display-2, .display-3, .display-4 {
+  font-family: $font-family-title;
+  font-weight: $font-weight-bold;
+}
+
 .main-heading {
   font-weight: $font-weight-bold;
   color: $white;
@@ -30,6 +41,10 @@ body {
     rgba(53, 8, 153, 1) 100%
   );
   border-radius: 0;
+  height: 27rem;
+  overflow: hidden;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 .btn {
   font-weight: $font-weight-bold;
@@ -40,5 +55,31 @@ body {
       color: darken($color-primary, 15%);
       background-color: darken($white, 15%);
     }
+  }
+}
+.hero-img {
+  width: 100%;
+  margin-top: -5rem;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.card {
+  position: relative;
+  border: none;
+  border-radius: .25rem;
+  overflow: hidden;
+  // background-color: darken($white, 5%);
+  &-img {
+    width: 20rem;
+  }
+  &-title {
+    color: $color-primary;
+  }
+  &:hover {
+    transform: scale(1.015);
+    box-shadow: 4px 0px 1rem 0 #cfcfcf;
   }
 }
