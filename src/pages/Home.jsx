@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { HeroSection } from "../sections/HeroSection";
 import { CardHorizontal } from "../components/CardHorizontal";
 import { Hero } from "../components/Hero";
 import { SearchForm } from "../components/SearchForm";
@@ -64,22 +65,7 @@ export const Home = () => {
 
   return (
     <div>
-      <Hero title="Fortnite Stats">
-        <div className="row">
-          <div className="col-lg-6">
-            <SearchForm />
-          </div>
-          <div className="col-lg-6">
-            <div className="image-gradient-bg">
-              <img
-                src={require("../img/fortnite.png")}
-                alt="Dois personagens de Fortnite."
-                className="hero-img d-none d-lg-block"
-              />
-            </div>
-          </div>
-        </div>
-      </Hero>
+      <HeroSection />
       <div className="section">
         <div className="container">
           <div className="row">
