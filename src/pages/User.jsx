@@ -2,11 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 import { Hero } from "../components/Hero";
 import { AccountContext } from "../context/AccountContext";
 import { UserInfoContext } from "../context/UserInfoContext";
-import { api } from '../utils/api'
-
+import { api } from "../utils/api";
 
 export const User = () => {
-
   const [accountId, setAccountId] = useContext(AccountContext);
   const [userInfo, setUserInfo] = useContext(UserInfoContext);
   const [username, setUsername] = useState();
@@ -40,7 +38,7 @@ export const User = () => {
     <div>
       {username ? (
         <div>
-          <Hero title={username} className="jumbotron-user"/>
+          <Hero title={username} className="jumbotron-user" />
           <div className="container">
             <div className="row">
               <div className="col-4">
