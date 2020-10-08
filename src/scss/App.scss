@@ -2,13 +2,15 @@
 @import "spacing.scss";
 
 $font-family-title: "Poppins", sans-serif;
-$font-family-text: 'Source Sans Pro', sans-serif;
+$font-family-text: "Source Sans Pro", sans-serif;
 $font-weight-thin: 300;
 $font-weight-normal: 400;
 $font-weight-bold: 700;
 
 $color-primary: #8b73bf;
 $white: #fff;
+
+$border-radius: 0.25rem;
 
 * {
   transition: all 0.2s ease-in-out;
@@ -20,10 +22,33 @@ $white: #fff;
 body {
   font-family: $font-family-text;
   line-height: 1.2;
+  overflow-x: hidden;
 }
-h1, h2, h3, h4, h5, h6, .display-1, .display-2, .display-3, .display-4 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.display-1,
+.display-2,
+.display-3,
+.display-4 {
   font-family: $font-family-title;
   font-weight: $font-weight-bold;
+}
+
+.bg {
+  &-primary {
+    background-color: $color-primary !important;
+    color: $white;
+  }
+}
+
+.text {
+  &-primary {
+    color: $color-primary;
+  }
 }
 
 .main-heading {
@@ -78,7 +103,7 @@ ul {
 .card {
   position: relative;
   border: none;
-  border-radius: .25rem;
+  border-radius: $border-radius;
   overflow: hidden;
   // background-color: darken($white, 5%);
   &-img {
@@ -87,8 +112,25 @@ ul {
   &-title {
     color: $color-primary;
   }
+  &-daily {
+    margin: 0.25rem;
+    padding: 0;
+    border-radius: ($border-radius * 2);
+    overflow: hidden;
+    img {
+      height: auto;
+      width: 100%;
+    }
+    &:hover {
+      box-shadow: none;
+    }
+  }
   &:hover {
     transform: scale(1.015);
     box-shadow: 4px 0px 1rem 0 #cfcfcf;
   }
+}
+
+.footer {
+  padding: 4rem 0;
 }

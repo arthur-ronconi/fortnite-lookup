@@ -3,13 +3,13 @@ import { useHistory } from "react-router-dom";
 import { SearchContext } from "../context/SearchContext";
 import { AccountContext } from "../context/AccountContext";
 import { UserInfoContext } from "../context/UserInfoContext";
-import { api } from '../utils/api'
-
+import { api } from "../utils/api";
 
 export const SearchForm = () => {
   const [searchTerm, setSearchTerm] = useContext(SearchContext);
   const [accountId, setAccountId] = useContext(AccountContext);
   const [userInfo, setUserInfo] = useContext(UserInfoContext);
+  const [loading, setLoading] = useState(false);
   const history = useHistory();
 
   // sets search term state on input change
@@ -23,24 +23,23 @@ export const SearchForm = () => {
   }, [searchTerm]);
 
   const getAccountId = (username) => {
-    return api().getAccountIdByUsername(username)
-  }
+    return api().getAccountIdByUsername(username);
+  };
   const handleClick = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const data = await getAccountId(searchTerm);
-      const id = await data.account_id
-      
-      setAccountId(id)
+      const id = await data.account_id;
+
+      setAccountId(id);
       console.log(id);
-      history.push(`/user/${id}`)
+      history.push(`/user/${id}`);
     } catch (err) {
       console.log(err);
     }
-    
+    setLoading(!loading);
   };
-
-  
 
   return (
     <form className="search-form">
@@ -56,15 +55,14 @@ export const SearchForm = () => {
           onChange={handleChange}
         />
       </div>
-      {/* <Link
-      to={`/user/:${link}`}
-      onClick={handleClick}
-      className="btn btn-white"
-    >
-      Search
-    </Link> */}
       <button onClick={handleClick} className="btn btn-white px-5">
-        Search
+        {loading ? (
+          <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        ) : (
+          <div>Search</div>
+        )}
       </button>
     </form>
   );
