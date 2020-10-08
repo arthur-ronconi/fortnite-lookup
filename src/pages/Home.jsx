@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import { CardHorizontal } from "../components/CardHorizontal";
 import { Hero } from "../components/Hero";
 import { SearchForm } from "../components/SearchForm";
+import { api } from '../utils/api'
 export const Home = () => {
-  const FortniteAPI = require("fortnite-api-io");
-  const fortniteAPI = new FortniteAPI("d4b0c477-a3bd4895-cf0dd77a-6d169cb7");
+  
   const [titles, setTitles] = useState([]);
 
   useEffect(() => {
     const getNews = () => {
-      return fortniteAPI.getNews("br", { lang: "en" });
+      return api().getNews("br", { lang: "en" });
     };
 
     const setNews = async () => {

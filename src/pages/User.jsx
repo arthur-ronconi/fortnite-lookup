@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import { Hero } from "../components/Hero";
 import { AccountContext } from "../context/AccountContext";
 import { UserInfoContext } from "../context/UserInfoContext";
+import { api } from '../utils/api'
+
 
 export const User = () => {
-  const FortniteAPI = require("fortnite-api-io");
-  const fortniteAPI = new FortniteAPI("d4b0c477-a3bd4895-cf0dd77a-6d169cb7");
 
   const [accountId, setAccountId] = useContext(AccountContext);
   const [userInfo, setUserInfo] = useContext(UserInfoContext);
@@ -15,7 +15,7 @@ export const User = () => {
   let userData;
   useEffect(() => {
     const getUserInfo = (id) => {
-      return fortniteAPI.getGlobalPlayerStats(id);
+      return api().getGlobalPlayerStats(id);
     };
     const getStats = async () => {
       try {

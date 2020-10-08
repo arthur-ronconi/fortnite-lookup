@@ -3,11 +3,10 @@ import { useHistory } from "react-router-dom";
 import { SearchContext } from "../context/SearchContext";
 import { AccountContext } from "../context/AccountContext";
 import { UserInfoContext } from "../context/UserInfoContext";
+import { api } from '../utils/api'
+
 
 export const SearchForm = () => {
-  const FortniteAPI = require("fortnite-api-io");
-  const fortniteAPI = new FortniteAPI("d4b0c477-a3bd4895-cf0dd77a-6d169cb7");
-
   const [searchTerm, setSearchTerm] = useContext(SearchContext);
   const [accountId, setAccountId] = useContext(AccountContext);
   const [userInfo, setUserInfo] = useContext(UserInfoContext);
@@ -24,7 +23,7 @@ export const SearchForm = () => {
   }, [searchTerm]);
 
   const getAccountId = (username) => {
-    return fortniteAPI.getAccountIdByUsername(username)
+    return api().getAccountIdByUsername(username)
   }
   const handleClick = async (e) => {
     e.preventDefault();
