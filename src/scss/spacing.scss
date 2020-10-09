@@ -3,4 +3,7 @@ $section-padding: 3rem;
 .section {
   padding-top: $section-padding;
   padding-bottom: $section-padding;
+  &-error {
+    height: 55vh;
+  }
 }

@@ -3,6 +3,7 @@ import "./scss/App.scss";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { User } from "./pages/User";
+import { ErrorPage } from "./pages/ErrorPage";
 import { Footer } from "./components/Footer";
 import { SearchProvider } from "./context/SearchContext";
 import { AccountProvider } from "./context/AccountContext";
@@ -18,6 +19,7 @@ function App() {
               <Switch>
                 <Route path="/" exact component={Home} />
                 <Route path="/user" component={User} />
+                <Route path="/error" component={ErrorPage} />
               </Switch>
             </UserInfoProvider>
           </AccountProvider>

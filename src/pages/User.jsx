@@ -5,10 +5,12 @@ import { UserInfoContext } from "../context/UserInfoContext";
 import { HeroSection } from "../sections/HeroSection";
 import { api } from "../utils/api";
 import { StatsList } from "../components/StatsList";
+import { useHistory } from "react-router-dom";
 
 export const User = () => {
   const [accountId, setAccountId] = useContext(AccountContext);
   const [userInfo, setUserInfo] = useContext(UserInfoContext);
+  const history = useHistory();
 
   useEffect(() => {
     const getUserInfo = (id) => {
@@ -20,6 +22,7 @@ export const User = () => {
         setUserInfo(await data);
       } catch (err) {
         console.log(err);
+        history.push("/error");
       }
     };
     getStats();
@@ -37,6 +40,7 @@ export const User = () => {
             title="Fortnite Stats"
             search={false}
             showImage={false}
+            backBtn={true}
           />
           <div className="container">
             <h1 className="my-5">{userInfo.name}</h1>

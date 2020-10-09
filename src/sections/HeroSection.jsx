@@ -8,6 +8,11 @@ export const HeroSection = (props) => {
         <div className="row">
           <div className="col-12 col-lg-6">
             {props.search && <SearchForm />}
+            {props.backBtn && (
+              <a href="/" className="text-white">
+                {"<  Back to homepage"}
+              </a>
+            )}
           </div>
           <div className="col-12 col-lg-6">
             <div className="image-gradient-bg">

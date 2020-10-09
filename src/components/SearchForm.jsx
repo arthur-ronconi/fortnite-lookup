@@ -31,6 +31,7 @@ export const SearchForm = () => {
       history.push(`/user/${id}`);
     } catch (err) {
       console.log(err);
+      history.push("/error");
     }
     setLoading(!loading);
   };
