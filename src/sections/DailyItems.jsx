@@ -16,8 +16,8 @@ export const DailyItems = (props) => {
   }, []);
   return (
     <div>
-      <h2>{props.title}</h2>
-      <ul className="row">
+      {/* <h2>{props.title}</h2> */}
+      <ul className="row py-3">
         {dailyItems.map((item) => {
           return (
             <li key={Math.random() * 100} className="col-6 p-0">

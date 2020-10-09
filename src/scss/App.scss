@@ -1,5 +1,6 @@
-@import "fonts.scss";
-@import "spacing.scss";
+@import "./fonts.scss";
+@import "./spacing.scss";
+@import "./breakpoints.scss";
 
 $font-family-title: "Poppins", sans-serif;
 $font-family-text: "Source Sans Pro", sans-serif;
@@ -23,6 +24,7 @@ body {
   font-family: $font-family-text;
   line-height: 1.2;
   overflow-x: hidden;
+  background-color: #e7e7e7;
 }
 h1,
 h2,
@@ -30,6 +32,12 @@ h3,
 h4,
 h5,
 h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
 .display-1,
 .display-2,
 .display-3,
@@ -47,7 +55,7 @@ h6,
 
 .text {
   &-primary {
-    color: $color-primary;
+    color: $color-primary !important;
   }
 }
 
@@ -75,10 +83,11 @@ h6,
   overflow: hidden;
   padding-left: 1rem;
   padding-right: 1rem;
-  clip-path: polygon(0 0, 100% 0, 100% 78%, 22% 100%, 0 81%);
-  // &-user {
-  //   height: 15rem !important;
-  // }
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+
+  @include lg {
+    clip-path: polygon(0 0, 100% 0, 100% 78%, 22% 100%, 0 81%);
+  }
 }
 .btn {
   font-weight: $font-weight-bold;
@@ -113,7 +122,7 @@ ul {
     color: $color-primary;
   }
   &-daily {
-    margin: 0.25rem;
+    margin: 0 0.25rem 0.5rem 0.25rem;
     padding: 0;
     border-radius: ($border-radius * 2);
     overflow: hidden;
@@ -131,6 +140,31 @@ ul {
   }
 }
 
+.stats {
+  li {
+    font-size: 1rem;
+    font-weight: $font-weight-normal;
+    font-family: $font-family-title;
+    margin: 0.25rem 0;
+    .data {
+      font-size: 1.5rem;
+      font-family: $font-family-title;
+      font-weight: $font-weight-bold;
+      color: $color-primary;
+    }
+  }
+}
+
+.loading {
+  height: 100vh;
+  width: 100vw;
+  z-index: 9999;
+  background-color: $color-primary;
+}
+
 .footer {
   padding: 4rem 0;
+  a {
+    color: $white;
+  }
 }

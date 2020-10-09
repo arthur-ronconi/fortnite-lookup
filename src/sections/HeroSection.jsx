@@ -1,23 +1,27 @@
 import React from "react";
 import { Hero } from "../components/Hero";
 import { SearchForm } from "../components/SearchForm";
-export const HeroSection = () => {
+export const HeroSection = (props) => {
   return (
-    <Hero title="Fortnite Stats">
-      <div className="row">
-        <div className="col-lg-6">
-          <SearchForm />
-        </div>
-        <div className="col-lg-6">
-          <div className="image-gradient-bg">
-            <img
-              src={require("../img/fortnite.png")}
-              alt="Dois personagens de Fortnite."
-              className="hero-img d-none d-lg-block"
-            />
+    <div className={props.className}>
+      <Hero title={props.title}>
+        <div className="row">
+          <div className="col-12 col-lg-6">
+            {props.search && <SearchForm />}
+          </div>
+          <div className="col-12 col-lg-6">
+            <div className="image-gradient-bg">
+              {props.showImage && (
+                <img
+                  src={require("../img/fortnite.png")}
+                  alt="Dois personagens de Fortnite."
+                  className="hero-img d-none d-lg-block"
+                />
+              )}
+            </div>
           </div>
         </div>
-      </div>
-    </Hero>
+      </Hero>
+    </div>
   );
 };

@@ -9,7 +9,6 @@ export const NewsFeed = (props) => {
     const getNews = () => {
       return api().getNews("br", { lang: "en" });
     };
-
     const setNews = async () => {
       const news = await getNews();
       const newsProperties = Object.entries(await news.news);
@@ -27,9 +26,10 @@ export const NewsFeed = (props) => {
     };
     setNews();
   }, []);
+
   return (
     <div>
-      <h2 className="ml-3">{props.title}</h2>
+      {/* <h2 className="ml-3">{props.title}</h2> */}
       <ul className="py-3">
         {titles.map((item) => {
           return (

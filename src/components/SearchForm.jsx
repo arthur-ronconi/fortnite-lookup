@@ -12,15 +12,9 @@ export const SearchForm = () => {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
-  // sets search term state on input change
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
   };
-
-  // logs input change
-  useEffect(() => {
-    console.log(`searchTerm changed to ${searchTerm}`);
-  }, [searchTerm]);
 
   const getAccountId = (username) => {
     return api().getAccountIdByUsername(username);
