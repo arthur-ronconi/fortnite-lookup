@@ -50,7 +50,22 @@ export const SearchForm = () => {
           onChange={handleChange}
         />
       </div>
-      <button onClick={handleClick} className="btn btn-white px-5">
+      <button
+        onClick={handleClick}
+        className="btn btn-white px-5 d-none d-md-block"
+      >
+        {loading ? (
+          <div className="spinner-border text-primary" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
+        ) : (
+          <div>Search</div>
+        )}
+      </button>
+      <button
+        onClick={handleClick}
+        className="btn btn-block btn-white px-5 d-md-none"
+      >
         {loading ? (
           <div className="spinner-border text-primary" role="status">
             <span className="sr-only">Loading...</span>

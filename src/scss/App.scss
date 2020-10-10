@@ -14,16 +14,25 @@ $white: #fff;
 $border-radius: 0.25rem;
 
 * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   transition: all 0.2s ease-in-out;
 }
 
 :root {
   font-size: 16px;
 }
+
+html,
+body,
+.App {
+  max-width: 100%;
+  overflow-x: hidden;
+}
 body {
   font-family: $font-family-text;
   line-height: 1.2;
-  overflow-x: hidden;
   background-color: #e7e7e7;
 }
 h1,
@@ -44,6 +53,10 @@ h6,
 .display-4 {
   font-family: $font-family-title;
   font-weight: $font-weight-bold;
+  text-align: center;
+  @include md {
+    text-align: left;
+  }
 }
 
 .bg {
@@ -62,10 +75,18 @@ h6,
 .main-heading {
   font-weight: $font-weight-bold;
   color: $white;
+  font-size: 2rem;
+  text-align: center;
+  @include md {
+    font-size: 3.5rem;
+    text-align: left;
+  }
 }
 .search-form {
   input.form-control {
-    width: 50%;
+    @include md {
+      width: 50%;
+    }
   }
 }
 .form-label {
@@ -79,7 +100,7 @@ h6,
     rgba(53, 8, 153, 1) 100%
   );
   border-radius: 0;
-  max-height: 27rem;
+  height: 23rem;
   overflow: hidden;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -87,6 +108,7 @@ h6,
 
   @include lg {
     clip-path: polygon(0 0, 100% 0, 100% 78%, 22% 100%, 0 81%);
+    height: 27rem;
   }
 }
 .btn {
@@ -114,15 +136,11 @@ ul {
   border: none;
   border-radius: $border-radius;
   overflow: hidden;
-  // background-color: darken($white, 5%);
-  &-img {
-    width: 20rem;
-  }
   &-title {
     color: $color-primary;
   }
   &-daily {
-    margin: 0 0.25rem 0.5rem 0.25rem;
+    margin: 0 0.175rem 0.25rem;
     padding: 0;
     border-radius: ($border-radius * 2);
     overflow: hidden;

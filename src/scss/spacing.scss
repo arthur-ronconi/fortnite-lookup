@@ -1,8 +1,14 @@
+@import "./breakpoints.scss";
+
 $section-padding: 3rem;
 
 .section {
-  padding-top: $section-padding;
-  padding-bottom: $section-padding;
+  padding-top: ($section-padding/3);
+  padding-bottom: ($section-padding/3);
+  @include md {
+    padding-top: $section-padding;
+    padding-bottom: $section-padding;
+  }
   &-error {
     height: 55vh;
   }

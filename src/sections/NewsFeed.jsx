@@ -15,7 +15,7 @@ export const NewsFeed = (props) => {
 
       // console.log(newsProperties[0][1]);
       const titleList = [];
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < 5; i++) {
         titleList.push([
           newsProperties[i][1].title,
           newsProperties[i][1].body,
@@ -29,7 +29,7 @@ export const NewsFeed = (props) => {
 
   return (
     <div>
-      {/* <h2 className="ml-3">{props.title}</h2> */}
+      <h2>{props.title}</h2>
       <ul className="py-3">
         {titles.map((item) => {
           return (

@@ -16,22 +16,24 @@ export const DailyItems = (props) => {
   }, []);
   return (
     <div>
-      {/* <h2>{props.title}</h2> */}
-      <ul className="row py-3">
-        {dailyItems.map((item) => {
-          return (
-            <li key={Math.random() * 100} className="col-6 p-0">
-              <div className="card card-daily">
-                <img
-                  src={item.full_background}
-                  alt={item.name}
-                  className="card-img"
-                />
-              </div>
-            </li>
-          );
-        })}
-      </ul>
+      <h2>{props.title}</h2>
+      <div className="container">
+        <ul className="row py-3">
+          {dailyItems.map((item) => {
+            return (
+              <li key={Math.random() * 100} className="col-6 p-0">
+                <div className="card card-daily">
+                  <img
+                    src={item.full_background}
+                    alt={item.name}
+                    className="card-img"
+                  />
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </div>
   );
 };
