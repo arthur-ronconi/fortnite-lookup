@@ -21,16 +21,11 @@ export const User = () => {
         const data = await getUserInfo(accountId);
         setUserInfo(await data);
       } catch (err) {
-        console.log(err);
-        history.push("/error");
+        console.error(err);
       }
     };
     getStats();
   }, []);
-
-  // useEffect(() => {
-  //   setLoading(false)
-  // }, [userInfo]);
 
   return (
     <div>
